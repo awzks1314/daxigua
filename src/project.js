@@ -1467,7 +1467,7 @@ window.__require = function e(t, n, o) {
     cc._RF.push(t, "197e1hfNnxIcJx73V3VhUxY", "HttpManagerJs");
     var a = e("GameConfig"),
       i = (c(o = {
-        URL: "http://www.wesane.com/h5service.php/Interface/services",
+        URL: "",
         cacheList: null,
         isBusy: null,
         req: null,
@@ -2131,18 +2131,19 @@ window.__require = function e(t, n, o) {
             i = c.substring(c.lastIndexOf("/game/") + 1, c.length).split("/");
           i.length >= 2 && (a = i[1]), this.gameHttpId = a, cc.log("gameId", a);
           e.substring(e.lastIndexOf("//") + 4, e.lastIndexOf("com") + 3);
-          this.moreGameUrl = "http://m.wesane.com/"
+          this.moreGameUrl = "/"
         },
         gameOverShowText: function (e, t) {
-          this.ajaxLoad("http://www.wesane.com/admin.php/Gamescore/saveGamescore", "gameScore=" + e + "&gameId=" + this.gameHttpId + "&gameType=" + t, this.scoreResult)
+          this.ajaxLoad("", "gameScore=" + e + "&gameId=" + this.gameHttpId + "&gameType=" + t, this.scoreResult)
         },
         gamePV_load: function () {
-          this.ajaxLoad("http://www.wesane.com/admin.php/Activityshow/gamelogo", "gameID=" + this.gameHttpId, this.ajaxOnLogoResult)
+          this.ajaxLoad("", "gameID=" + this.gameHttpId, this.ajaxOnLogoResult)
         },
         ajaxOnLogoResult: function () {
         },
         ajaxLoad: function (e, t, n) {
           var o = cc.loader.getXMLHttpRequest();
+		  console.log('11')
           o.onreadystatechange = n, o.open("POST", e), o.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), o.send(t)
         },
         scoreResult: function (e) {
@@ -3492,7 +3493,7 @@ window.__require = function e(t, n, o) {
             var fruitVolume = reverseLevelUp ? -1 : 1;
             // 合成水果，水果下标 0-9 (0 为葡萄，9 为半个西瓜，有一些特殊逻辑)
             c == r && (reverseLevelUp ? (c > border && r > border) : (c < border && r < border)) ? (this.pengzhuangCount += 1,
-              0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += this.fruitNumber + (extraScore ? extraScore : 1), // 改分数
+              0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += this.fruitNumber + (1 * multiplescore), // 改分数
                 u.default.Instance.SetScoreTween(a.default.score),
                 n.node.getComponent(cc.PhysicsCircleCollider).radius = 0,
                 n.node.getComponent(cc.PhysicsCircleCollider).apply(),
@@ -3507,7 +3508,7 @@ window.__require = function e(t, n, o) {
                 }).start())) :
               c == r && border == c && border == r && // 边界逻辑
               (this.pengzhuangCount += 1,
-              0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += this.fruitNumber + (extraScore ? extraScore : 1), // 改分数
+              0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += this.fruitNumber + (1 * multiplescore), // 改分数
                 u.default.Instance.SetScoreTween(a.default.score),
                 n.node.getComponent(cc.PhysicsCircleCollider).radius = 0,
                 n.node.getComponent(cc.PhysicsCircleCollider).apply(),
